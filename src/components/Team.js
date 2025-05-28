@@ -1,5 +1,6 @@
 'use client';
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 
 const barbers = [
   {
@@ -51,7 +52,7 @@ const Team = () => {
               className="bg-gray-800 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300"
             >
               <div className="relative h-64 overflow-hidden">
-                <img
+                <Image
                   src={barber.image}
                   alt={barber.name}
                   className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
