@@ -1,5 +1,6 @@
 'use client';
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 
 const galleryImages = [
   { id: 1, src: '/Best_High_Fade_Haircuts_for_Men_2_1.webp', alt: 'Barber working on a fade haircut' },
@@ -39,7 +40,7 @@ const Gallery = () => {
               className="overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300"
             >
               <div className="relative group">
-                <img
+                <Image
                   src={image.src}
                   alt={image.alt}
                   className="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110"
