@@ -121,7 +121,7 @@ const Booking = () => {
                   <option value="Beard Trim">Beard Trim</option>
                   <option value="Hot Towel Shave">Hot Towel Shave</option>
                   <option value="Hair & Beard Combo">Hair & Beard Combo</option>
-                  <option value="Kid's Cut">Kid's Cut</option>
+                  <option value="Kid&apos;s Cut">Kid&apos;s Cut</option>
                   <option value="Hair Coloring">Hair Coloring</option>
                 </select>
               </div>
