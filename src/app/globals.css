@@ -1,26 +1,245 @@
 @import "tailwindcss";
+@import "tw-animate-css";
 
+/* Removed unsupported @custom-variant dark (&:is(.dark *)); */
+
+/* Custom styles */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
+}    
+
+/* Custom animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { 
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to { 
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
+/* Base styles */
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(
+      to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))
+    )
+    rgb(var(--background-start-rgb));
+}
+
+/* Custom components */
+.btn-primary {
+  background-color: #d97706; /* Tailwind bg-amber-600 */
+  color: #fff; /* Tailwind text-white */
+  font-weight: bold; /* Tailwind font-bold */
+  padding-top: 0.75rem; /* Tailwind py-3 */
+  padding-bottom: 0.75rem;
+  padding-left: 2rem; /* Tailwind px-8 */
+  padding-right: 2rem;
+  border-radius: 9999px; /* Tailwind rounded-full */
+  transition: all 0.3s;
+  transform: scale(1);
+}
+.btn-primary:hover {
+  background-color: #b45309; /* Tailwind hover:bg-amber-700 */
+  transform: scale(1.05); /* Tailwind hover:scale-105 */
+}
+
+.btn-outline {
+  background-color: transparent;
+  border-width: 2px;
+  border-style: solid;
+  border-color: #fff;
+  color: #fff;
+  font-weight: bold;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  border-radius: 9999px;
+  transition: all 0.3s;
+  transform: scale(1);
+}
+.btn-outline:hover {
+  background-color: #fff;
+  color: #000;
+  transform: scale(1.05);
+}
+
+.section-title {
+  font-size: 1.875rem; /* text-3xl */
+  font-weight: 700; /* font-bold */
+  color: #1a202c; /* text-gray-900 */
+  margin-bottom: 1rem; /* mb-4 */
+}
+
+@media (min-width: 768px) {
+  .section-title {
+    font-size: 2.25rem; /* md:text-4xl */
+  }
+}
+
+.section-divider {
+  width: 5rem; /* w-20 */
+  height: 0.25rem; /* h-1 */
+  background-color: #f59e42; /* bg-amber-500 */
+  margin-left: auto; /* mx-auto */
+  margin-right: auto;
+}
+
+.section-description {
+  margin-top: 1.5rem; /* mt-6 */
+  font-size: 1.125rem; /* text-lg */
+  color: #4b5563; /* text-gray-600 */
+  max-width: 42rem; /* max-w-2xl */
+  margin-left: auto; /* mx-auto */
+  margin-right: auto;
+}
+
+/* Scrollbar styles */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #f59e42;
+}
+
+.input-focus:focus {
+  outline: none;
+  border-color: #f59e42; /* border-amber-500 */
+  box-shadow: 0 0 0 3px rgba(245, 158, 66, 0.5); /* ring-amber-500 */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #b45309;
+}
+
+/* Image hover effects */
+.img-zoom {
+  transition: transform 0.5s ease;
+}
+
+.img-zoom:hover {
+  transform: scale(1.05);
+}
+
+/* Form input focus styles */
+.input-focus:focus {
+  outline: none;
+  border-color: #f59e42; /* Tailwind border-amber-500 */
+  box-shadow: 0 0 0 3px rgba(245, 158, 66, 0.5); /* Tailwind ring-amber-500 */
+}
+
+/* Animation classes */
+.animate-fade-in {
+  animation: fadeIn 0.8s ease-out forwards;
+}
+
+.animate-slide-up {
+  animation: slideUp 0.8s ease-out forwards;
+}
+
+/* Service card hover effect */
+.service-card {
+  transition: all 0.3s ease;
+}
+
+.service-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+/* Testimonial card styling */
+.testimonial-card {
+  position: relative;
+}
+
+.testimonial-card::before {
+  content: '"';
+  position: absolute;
+  top: -20px;
+  left: 10px;
+  font-size: 60px;
+  color: #d97706;
+  opacity: 0.2;
+  font-family: serif;
+  line-height: 1;
+}
+
+/* Mobile menu animation */
+@media (max-width: 768px) {
+  .section-title {
+    font-size: 1.5rem; /* text-2xl */
+  }
+  
+  .section-description {
+    font-size: 1rem; /* text-base */
+  }
+}   
+
+/* Booking form styling */
+.booking-form {
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .section-title {
+    font-size: 1.5rem; /* text-2xl */
+  }
+  
+  .section-description {
+    font-size: 1rem; /* text-base */
+  }
+}
+
+/* Add this to your existing globals.css */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Ensure sections have proper stacking */
+section {
+  position: relative;
+  z-index: 1;
+}
+
+/* Hero section specific styles */
+#home {
+  z-index: 2;
+}
+
+/* Services section background fix */
+#services {
+  background-color: #f3f4f6; /* bg-gray-100 */
+  position: relative;
+}
+
+/* Animation timing adjustments */
+.motion-div {
+  will-change: transform, opacity;
 }
