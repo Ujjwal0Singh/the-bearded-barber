@@ -1,5 +1,6 @@
 'use client';
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 import Link from 'next/link';
 
 const Hero = () => {
@@ -8,7 +9,7 @@ const Hero = () => {
       {/* Background Image with Overlay */}
       <div className="absolute inset-0">
         <div className="absolute inset-0 bg-black opacity-60"></div>
-        <img
+        <Image
           src="young-man-barbershop-trimming-hair.jpg"
           alt="Barber cutting hair"
           className="w-full h-full object-cover"
